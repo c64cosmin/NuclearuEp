@@ -1,0 +1,11 @@
+{ 
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "CommonJS",
+    "esModuleInterop": true,
+    "outDir": "./dist/js",
+    "rootDir": "./src/frontend",
+    "strict": true
+  },
+  "include": ["src/frontend/**/*.ts"]
+}
