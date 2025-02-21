@@ -1,6 +1,6 @@
-const Config = {
+export const Config = {
   PORT: 31415,
-  STATIC_DIR: "static"
+  TIME_INTERVAL: 3000,
+  HTML_PATH: "../static/index.html",
+  JS_PATH: "../dist/frontend/app.js",
 } as const;
-
-export default Config;
