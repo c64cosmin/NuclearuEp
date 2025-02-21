@@ -5,7 +5,8 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": "./server",
     "strict": true
-  }
+  },
+  "include": ["server/**/*.ts"]
 }

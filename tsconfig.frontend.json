@@ -4,8 +4,8 @@
     "module": "CommonJS",
     "esModuleInterop": true,
     "outDir": "./dist/js",
-    "rootDir": "./src",
+    "rootDir": "./frontend",
     "strict": true
   },
-  "include": ["src/frontend/**/*.ts", "src/reactor.ts"]
+  "include": ["frontend/**/*.ts", "reactor.ts"]
 }
