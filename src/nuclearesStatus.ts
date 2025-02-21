@@ -6,9 +6,28 @@ import { NuclearesPaths } from "./nucleares";
 export let NuclearesState: Reactor = getReactor();
 
 export function updateNuclearesState() {
-  for (const variable in NuclearesPaths) {
-    doRequest(variable, NuclearesPaths[variable]);
+  if (NuclearesState.online) {
+    for (const variable in NuclearesPaths) {
+      doRequest(variable, NuclearesPaths[variable]);
+    }
   }
+}
+
+export function seekNucleares() {
+  const pingFunction = () => {
+    const path = `http://${Config.NUCLEARES_PATH}:${Config.NUCLEARES_PORT}`;
+    http
+      .get(path, (_) => {
+        NuclearesState.online = true;
+      })
+      .on("error", () => {
+        NuclearesState.online = false;
+      });
+
+    setTimeout(pingFunction, 30000);
+  };
+
+  pingFunction();
 }
 
 function doRequest(variable: string, path: (string | number)[]) {
@@ -27,6 +46,8 @@ function doRequest(variable: string, path: (string | number)[]) {
     });
 
     res.on("end", () => {
+      let value: any = data;
+
       const state = NuclearesState as any;
       const n = path.length;
       let entry = state[path[0]];
@@ -34,19 +55,22 @@ function doRequest(variable: string, path: (string | number)[]) {
         entry = entry[path[i]];
       }
 
-      const positives = ["TRUE", "NOREACTIVO", "INMOVIL"];
+      const positives = ["TRUE", "REACTIVO", "CIRCULANDO"];
       const negatives = ["FALSE", "NOREACTIVO", "INMOVIL"];
 
-      if (positives.includes(data)) data = "1";
-      if (negatives.includes(data)) data = "0";
+      if (positives.includes(value)) value = "1";
+      if (negatives.includes(value)) value = "0";
 
-      let value:any = data
       //is not time
-      if (!data.includes(":")) {
-          value = Number(data);
+      if (!value.includes(":")) {
+        value = Number(value);
       }
 
       entry[path[n - 1]] = value;
+    });
+
+    res.on("error", () => {
+      NuclearesState.online = false;
     });
   });
 

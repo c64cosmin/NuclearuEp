@@ -1,7 +1,11 @@
 import express, { Request, Response } from "express";
 import path from "path";
 import { Config } from "./config";
-import { NuclearesState, updateNuclearesState } from "./nuclearesStatus";
+import {
+  seekNucleares,
+  NuclearesState,
+  updateNuclearesState,
+} from "./nuclearesStatus";
 
 const app = express();
 const PORT = Config.PORT;
@@ -35,3 +39,4 @@ const loop = () => {
   setTimeout(loop, Config.TIME_INTERVAL);
 };
 loop();
+seekNucleares();

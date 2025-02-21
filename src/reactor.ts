@@ -80,6 +80,7 @@ export type SteamTurbine = {
 };
 
 export type Reactor = {
+  online: boolean;
   time: TimeInfo;
   core: Core;
   coolant: Coolant;
@@ -88,8 +89,9 @@ export type Reactor = {
   turbines: SteamTurbine[];
 };
 
-export function getReactor() {
+export function getReactor(): Reactor {
   return {
+    online: false,
     time: {
       time: Date.now(),
       timestamp: Date.now(),
