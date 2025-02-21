@@ -6,8 +6,27 @@
     <title>Static Server</title>
   </head>
   <body>
+    <script src="/app"></script>
     <h1>Hello from a Static File! 🚀</h1>
     <div id="status"></div>
-    <script src="/app"></script>
+    <style>
+      .propeller {
+        width: 100px;
+        height: 100px;
+        animation: rotate 2s linear infinite;
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+
+    <img class="propeller" src="img/propeller.svg" alt="Rotating Propeller" />
+    <img class="propeller" src="img/propeller.svg" alt="Rotating Propeller" />
   </body>
 </html>

@@ -11,7 +11,7 @@ const app = express();
 const PORT = Config.PORT;
 
 const serveHtml = (_: Request, res: Response) => {
-  res.sendFile(path.join(__dirname, Config.HTML_PATH));
+  res.sendFile(path.join(__dirname, Config.STATIC_PATH, Config.INDEX_HTML));
 };
 
 const serveJs = (_: Request, res: Response) => {
@@ -22,10 +22,15 @@ const serveStatus = (_: Request, res: Response) => {
   res.send(JSON.stringify(NuclearesState));
 };
 
+const serveImages = express.static(
+  path.join(__dirname, Config.STATIC_PATH, Config.IMAGE_PATH),
+);
+
 app.get("/", serveHtml);
 app.get("/index.html", serveHtml);
 app.get("/app", serveJs);
 app.get("/status", serveStatus);
+app.use("/img", serveImages);
 
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}/`);
