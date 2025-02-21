@@ -1,5 +1,6 @@
 export type Core = {
   temp: {
+    current: number;
     operative: number;
     max: number;
     min: number;
@@ -39,6 +40,7 @@ export type Coolant = {
   reachedFlowSpeed: number;
   quantityCirculationPumpsPresent: number;
   quantityFreightPumpsPresent: number;
+  pumps: Pump[];
 };
 
 export type Pump = {
@@ -94,79 +96,115 @@ export function getReactor() {
     },
     core: {
       temp: {
-        operative: 500, // example value in degrees
-        max: 1000, // example max temp
-        min: 100, // example min temp
-        residual: 10, // example residual temp
+        current: 330,
+        operative: 500,
+        max: 1000,
+        min: 100,
+        residual: 10,
       },
       pressure: {
-        current: 100, // example current pressure
-        max: 200, // example max pressure
-        operative: 150, // example operative pressure
+        current: 100,
+        max: 200,
+        operative: 150,
       },
-      integrity: 100, // example integrity value (could be % or rating)
-      wear: 5, // example wear value (could be percentage)
-      state: 1, // example state (e.g., 1 = running)
-      stateCriticality: 0, // example criticality level (e.g., 0 = normal)
-      criticalMassReached: false, // example critical mass status
-      criticalMassReachedCounter: 0, // initial counter
-      imminentFusion: false, // whether fusion is imminent
-      readyForStart: true, // reactor is ready for start
-      steamPresent: true, // whether steam is present
-      highSteamPresent: false, // whether high steam is present
+      integrity: 100,
+      wear: 5,
+      state: 1,
+      stateCriticality: 0,
+      criticalMassReached: false,
+      criticalMassReachedCounter: 0,
+      imminentFusion: false,
+      readyForStart: true,
+      steamPresent: true,
+      highSteamPresent: false,
     },
     coolant: {
-      state: 1, // coolant state (1 = normal)
-      pressure: 120, // current coolant pressure
-      maxPressure: 180, // max allowable pressure
-      vesselTemperature: 250, // temperature inside coolant vessel
-      quantityInVessel: 1000, // amount of coolant in the vessel
-      primaryLoopLevel: 80, // primary loop level percentage
-      flowSpeed: 10, // flow speed of the coolant
-      orderedFlowSpeed: 12, // ordered speed for the coolant flow
-      reachedFlowSpeed: 10, // actual reached flow speed
-      quantityCirculationPumpsPresent: 3, // number of circulation pumps
-      quantityFreightPumpsPresent: 2, // number of freight pumps
+      state: 1,
+      pressure: 120,
+      maxPressure: 180,
+      vesselTemperature: 250,
+      quantityInVessel: 1000,
+      primaryLoopLevel: 80,
+      flowSpeed: 10,
+      orderedFlowSpeed: 12,
+      reachedFlowSpeed: 10,
+      quantityCirculationPumpsPresent: 3,
+      quantityFreightPumpsPresent: 2,
+      pumps: [
+        {
+          status: 1,
+          dryStatus: 0,
+          overloadStatus: 0,
+          orderedSpeed: 0,
+          speed: 50,
+        },
+        {
+          status: 1,
+          dryStatus: 0,
+          overloadStatus: 0,
+          orderedSpeed: 0,
+          speed: 50,
+        },
+        {
+          status: 1,
+          dryStatus: 0,
+          overloadStatus: 0,
+          orderedSpeed: 0,
+          speed: 50,
+        },
+      ],
     },
     rods: {
-      status: 1, // rod status (1 = active)
-      movementSpeed: 5, // speed at which rods move
-      movementSpeedDecreasedHighTemp: false, // movement speed decreased due to high temperature
-      deformed: false, // rods deformation status
-      temperature: 500, // rod temperature
-      maxTemperature: 600, // maximum allowable temperature
-      posOrdered: 50, // ordered position of the rods
-      posActual: 50, // actual position of the rods
-      posReached: 50, // position reached by the rods
-      quantity: 10, // number of rods
-      aligned: true, // rods alignment status
+      status: 1,
+      movementSpeed: 5,
+      movementSpeedDecreasedHighTemp: false,
+      deformed: false,
+      temperature: 500,
+      maxTemperature: 600,
+      posOrdered: 50,
+      posActual: 50,
+      posReached: 50,
+      quantity: 10,
+      aligned: true,
     },
     generators: [
       {
-        kw: 1000, // generator 0 power (in kW)
-        v: 220, // generator 0 voltage (in V)
-        a: 10, // generator 0 current (in A)
-        hertz: 60, // generator 0 frequency (in Hz)
-        breaker: 1, // generator 0 breaker status (1 = open)
+        kw: 1000,
+        v: 220,
+        a: 10,
+        hertz: 60,
+        breaker: 1,
       },
       {
-        kw: 1500, // generator 1 power (in kW)
-        v: 220, // generator 1 voltage (in V)
-        a: 12, // generator 1 current (in A)
-        hertz: 60, // generator 1 frequency (in Hz)
-        breaker: 1, // generator 1 breaker status (1 = open)
+        kw: 1500,
+        v: 220,
+        a: 12,
+        hertz: 60,
+        breaker: 1,
+      },
+      {
+        kw: 1500,
+        v: 220,
+        a: 12,
+        hertz: 60,
+        breaker: 1,
       },
     ],
     turbines: [
       {
-        rpm: 3000, // turbine 0 rpm
-        temperature: 450, // turbine 0 temperature
-        pressure: 200, // turbine 0 pressure
+        rpm: 3000,
+        temperature: 450,
+        pressure: 200,
       },
       {
-        rpm: 3100, // turbine 1 rpm
-        temperature: 460, // turbine 1 temperature
-        pressure: 220, // turbine 1 pressure
+        rpm: 3000,
+        temperature: 450,
+        pressure: 200,
+      },
+      {
+        rpm: 3100,
+        temperature: 460,
+        pressure: 220,
       },
     ],
   };

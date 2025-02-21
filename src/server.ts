@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import path from "path";
 import { Config } from "./config";
-import { Reactor, getReactor } from "./reactor";
+import { NuclearesState, updateNuclearesState } from "./nuclearesStatus";
 
 const app = express();
 const PORT = Config.PORT;
@@ -15,7 +15,7 @@ const serveJs = (_: Request, res: Response) => {
 };
 
 const serveStatus = (_: Request, res: Response) => {
-  res.send(JSON.stringify(reactor));
+  res.send(JSON.stringify(NuclearesState));
 };
 
 app.get("/", serveHtml);
@@ -27,10 +27,8 @@ app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}/`);
 });
 
-let reactor: Reactor = getReactor();
-
 const update = () => {
-  console.log(reactor);
+  updateNuclearesState();
 };
 const loop = () => {
   update();

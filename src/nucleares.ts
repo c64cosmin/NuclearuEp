@@ -1,5 +1,5 @@
-export const NuclearesPaths = {
-  CORE_TEMP: ["core", "temp"],
+export const NuclearesPaths: { [key: string]: (string | number)[] } = {
+  CORE_TEMP: ["core", "temp", "current"],
   CORE_TEMP_OPERATIVE: ["core", "temp", "operative"],
   CORE_TEMP_MAX: ["core", "temp", "max"],
   CORE_TEMP_MIN: ["core", "temp", "min"],
@@ -134,4 +134,4 @@ export const NuclearesPaths = {
   STEAM_TURBINE_0_PRESSURE: ["turbines", 0, "pressure"],
   STEAM_TURBINE_1_PRESSURE: ["turbines", 1, "pressure"],
   STEAM_TURBINE_2_PRESSURE: ["turbines", 2, "pressure"],
-} as const;
+};
