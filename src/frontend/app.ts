@@ -1,3 +1,4 @@
+import { Config } from "../config";
 import { Reactor, getReactor } from "../reactor";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -7,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 let status: Reactor = getReactor();
+let online: boolean = false;
 
 function updateStatus() {
   const xhr = new XMLHttpRequest();
@@ -15,9 +17,15 @@ function updateStatus() {
 
   xhr.onload = function () {
     if (xhr.status == 200) {
+      online = true;
       const data = JSON.parse(xhr.responseText);
       status = data;
+    } else {
+      online = false;
     }
+  };
+  xhr.onerror = function () {
+    online = false;
   };
   xhr.send();
 }
@@ -26,11 +34,11 @@ const update = () => {
   updateStatus();
   const element = document.getElementById("status");
   if (element) {
-    element.innerHTML = JSON.stringify(status);
+    element.innerHTML = online + "\n" + JSON.stringify(status);
   }
 };
 const loop = () => {
   update();
-  setTimeout(loop, 3000);
+  setTimeout(loop, Config.TIME_INTERVAL);
 };
 loop();
