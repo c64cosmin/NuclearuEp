@@ -23,7 +23,7 @@ function updateStatus() {
 }
 
 const update = () => {
-    updateStatus();
+  updateStatus();
   const element = document.getElementById("status");
   if (element) {
     element.innerHTML = JSON.stringify(status);

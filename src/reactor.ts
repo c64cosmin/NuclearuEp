@@ -13,7 +13,7 @@ export type Core = {
   };
   integrity: number;
   wear: number;
-  state: number;
+  reactive: number;
   stateCriticality: number;
   criticalMassReached: boolean;
   criticalMassReachedCounter: number;
@@ -29,7 +29,7 @@ export type TimeInfo = {
 };
 
 export type Coolant = {
-  state: number;
+  circulating: number;
   pressure: number;
   maxPressure: number;
   vesselTemperature: number;
@@ -109,7 +109,7 @@ export function getReactor() {
       },
       integrity: 100,
       wear: 5,
-      state: 1,
+      reactive: 1,
       stateCriticality: 0,
       criticalMassReached: false,
       criticalMassReachedCounter: 0,
@@ -119,7 +119,7 @@ export function getReactor() {
       highSteamPresent: false,
     },
     coolant: {
-      state: 1,
+      circulating: 1,
       pressure: 120,
       maxPressure: 180,
       vesselTemperature: 250,
