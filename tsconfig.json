@@ -1,12 +1,12 @@
 {
-	"compilerOptions": {
-		"target": "ES6",
-		"module": "commonjs",
-		"esModuleInterop": true,
-		"skipLibCheck": true,
-		"outDir": "./dist/backend",
-		"rootDir": "./src",
-		"strict": true
-	},
-	"include": ["src/**/*.ts"]
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "outDir": "./dist/backend",
+    "rootDir": "./src",
+    "strict": true
+  },
+  "include": ["src/**/*.ts"]
 }

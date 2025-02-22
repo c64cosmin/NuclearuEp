@@ -13,9 +13,9 @@ export class GfxPump extends GfxObject<HTMLDivElement> {
   ) {
     super(parent, position);
     this.propeller = new Propeller(this.element, { x: 0, y: 0 });
-	this.pumpBody = document.createElement("img");
-	this.pumpBody.src = "img/pump.svg";
-	this.element.appendChild(this.pumpBody);
+    this.pumpBody = document.createElement("img");
+    this.pumpBody.src = "img/pump.svg";
+    this.element.appendChild(this.pumpBody);
   }
 
   protected getElement(): HTMLDivElement {

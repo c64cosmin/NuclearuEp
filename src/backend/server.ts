@@ -10,27 +10,31 @@ import {
 const app = express();
 const PORT = Config.PORT;
 
-const serveHtml = (_: Request, res: Response) => {
-  res.sendFile(path.join(__dirname, Config.STATIC_PATH, Config.INDEX_HTML));
+const files = [
+  ["/", Config.STATIC_PATH + Config.INDEX_HTML],
+  ["/index.html", Config.STATIC_PATH + Config.INDEX_HTML],
+  ["/app.js", Config.JS_PATH],
+];
+
+const serveFile = (urlpath: string, filepath: string) => {
+  const handle = (_: Request, res: Response) => {
+    res.sendFile(path.join(__dirname, filepath));
+  };
+  app.get(urlpath, handle);
 };
 
-const serveJs = (_: Request, res: Response) => {
-  res.sendFile(path.join(__dirname, Config.JS_PATH));
-};
+files.forEach(([urlpath, filepath]) => {
+    serveFile(urlpath, filepath);
+});
 
-const serveStatus = (_: Request, res: Response) => {
+app.get("/status", (_: Request, res: Response) => {
   res.send(JSON.stringify(NuclearesState));
-};
+});
 
-const serveImages = express.static(
-  path.join(__dirname, Config.STATIC_PATH, Config.IMAGE_PATH),
+app.use(
+  "/img",
+  express.static(path.join(__dirname, Config.STATIC_PATH, Config.IMAGE_PATH)),
 );
-
-app.get("/", serveHtml);
-app.get("/index.html", serveHtml);
-app.get("/app.js", serveJs);
-app.get("/status", serveStatus);
-app.use("/img", serveImages);
 
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}/`);

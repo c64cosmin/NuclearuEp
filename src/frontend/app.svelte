@@ -1,10 +1,10 @@
-<script>
+<script lang="ts">
+  import Pump from "./pump.svelte";
   let name = 'World';
 </script>
 
 <main>
-  <h1>Hello {name}!</h1>
-  <input bind:value={name} placeholder="Enter your name" />
+  <Pump speed=1 active=true />
 </main>
 
 <style>
