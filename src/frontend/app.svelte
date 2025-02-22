@@ -3,10 +3,6 @@
   let name = 'World';
 </script>
 
-<main>
-  <Pump speed=1 active=true />
-</main>
-
 <style>
   main {
     text-align: center;
@@ -17,3 +13,9 @@
     margin-top: 1rem;
   }
 </style>
+
+<main>
+  <Pump speed=1 active=true />
+  <Pump speed=2 active=true />
+  <Pump speed=3 active=true />
+</main>
