@@ -46,6 +46,10 @@ function updateStatus() {
 		}
 	};
 
+	xhr.ontimeout = function () {
+		online = false;
+	};
+
 	xhr.onerror = function () {
 		online = false;
 	};
@@ -63,9 +67,9 @@ const update = () => {
 		obj.update();
 	});
 };
+
 const loop = () => {
 	update();
-	setTimeout(loop, Config.TIME_INTERVAL);
 };
 
 const gfxObjects: GfxObject<HTMLElement>[] = [];
@@ -80,3 +84,4 @@ gfxObjects.push(
 );
 
 loop();
+setInterval(loop, Config.TIME_INTERVAL);

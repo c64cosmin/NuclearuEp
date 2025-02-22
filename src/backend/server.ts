@@ -41,7 +41,6 @@ const update = () => {
 };
 const loop = () => {
   update();
-  setTimeout(loop, Config.TIME_INTERVAL);
 };
-loop();
 seekNucleares();
+setInterval(loop, Config.TIME_INTERVAL);
