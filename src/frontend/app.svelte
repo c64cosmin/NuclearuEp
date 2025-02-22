@@ -2,6 +2,7 @@
 	import { startNucleares } from "./nucleares";
 	import { getReactor } from "../reactor";
 	import Pump from "./pump.svelte";
+	import Turbine from "./turbine.svelte";
 
 	let reactorState = getReactor();
 	let serverOnline = false;
@@ -51,12 +52,13 @@
 			/>
 		</div>
 	</div>
-    <div style={"opacity:"+(serverOnline?"100%":"30%")}>
-	<Pump state={reactorState.coolant.pumps[0]} />
-	<Pump state={reactorState.coolant.pumps[1]} />
-	<Pump state={reactorState.coolant.pumps[2]} />
-	<div>{JSON.stringify(reactorState)}</div>
-    </div>
+	<div style={"opacity:" + (serverOnline ? "100%" : "30%")}>
+		<Pump state={reactorState.coolant.pumps[0]} />
+		<Pump state={reactorState.coolant.pumps[1]} />
+		<Pump state={reactorState.coolant.pumps[2]} />
+		<Turbine state={reactorState.turbines[0]} />
+		<div>{JSON.stringify(reactorState)}</div>
+	</div>
 </main>
 
 <style>

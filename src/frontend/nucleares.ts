@@ -16,9 +16,7 @@ export function startNucleares(
 	setInterval(update, Config.TIME_INTERVAL);
 }
 
-function updateStatus(
-	callback: (online: boolean, state: Reactor) => void,
-) {
+function updateStatus(callback: (online: boolean, state: Reactor) => void) {
 	const xhr = new XMLHttpRequest();
 
 	xhr.open("GET", "/status", true);
@@ -31,15 +29,18 @@ function updateStatus(
 			callback(serverOnline, reactorState);
 		} else {
 			serverOnline = false;
+			callback(serverOnline, reactorState);
 		}
 	};
 
 	xhr.ontimeout = function () {
 		serverOnline = false;
+		callback(serverOnline, reactorState);
 	};
 
 	xhr.onerror = function () {
 		serverOnline = false;
+		callback(serverOnline, reactorState);
 	};
 
 	xhr.send();
