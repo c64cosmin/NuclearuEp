@@ -9,14 +9,16 @@ export function startNucleares(
 	callback: (online: boolean, state: Reactor) => void,
 ) {
 	const update = () => {
-		updateStatus();
-		callback(serverOnline, reactorState);
+		updateStatus(callback);
 	};
 
+	update();
 	setInterval(update, Config.TIME_INTERVAL);
 }
 
-function updateStatus() {
+function updateStatus(
+	callback: (online: boolean, state: Reactor) => void,
+) {
 	const xhr = new XMLHttpRequest();
 
 	xhr.open("GET", "/status", true);
@@ -26,6 +28,7 @@ function updateStatus() {
 			serverOnline = true;
 			const data = JSON.parse(xhr.responseText);
 			copyData(reactorState, data);
+			callback(serverOnline, reactorState);
 		} else {
 			serverOnline = false;
 		}
