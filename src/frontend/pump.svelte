@@ -5,6 +5,16 @@
 	$: duration = state.speed === 0 ? 0 : 40 / state.speed;
 </script>
 
+<div class="image-container">
+	<img src="img/pump.svg" alt="pump" />
+	<img
+		src="img/propeller.svg"
+		alt="fan"
+		class="rotating"
+		style={`animation-duration: ${duration}s`}
+	/>
+</div>
+
 <style>
 	img {
 		display: block;
@@ -39,13 +49,3 @@
 		height: 100%;
 	}
 </style>
-
-<div class="image-container">
-	<img src="img/pump.svg" alt="pump" />
-	<img
-		src="img/propeller.svg"
-		alt="fan"
-		class="rotating"
-		style={`animation-duration: ${duration}s`}
-	/>
-</div>

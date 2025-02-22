@@ -38,7 +38,6 @@ app.use(
 );
 
 app.listen(PORT, () => {
-    console.log("asdfasdf");
 	console.log(`Server running at http://localhost:${PORT}/`);
 });
 

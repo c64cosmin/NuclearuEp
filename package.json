@@ -4,17 +4,14 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev": "concurrently --kill-others \"npm run dev:backend\" \"npm run dev:frontend\"",
-        "build": "npm run build:backend && npm run build:frontend",
-        "start": "node dist/backend/backend/server.js",
-		"dev:backend": "concurrently --kill-others \"node dev.backend.js\" \"npx tsc --watch\"",
-		"dev:frontend": "node dev.frontend.js",
+		"dev": "node build/build.dev.js",
+		"build": "npm run build:frontend && npm run build:backend",
+		"start": "node dist/backend/backend/server.js",
 		"build:backend": "tsc",
-		"build:frontend": "node esbuild.frontend.js"
+		"build:frontend": "node build/build.frontend.js"
 	},
 	"author": "c64cosmin",
 	"dependencies": {
-		"concurrently": "^9.1.2",
 		"esbuild-svelte": "^0.9.0",
 		"express": "^4.21.2"
 	},
