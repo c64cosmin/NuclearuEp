@@ -1,6 +1,15 @@
 <script lang="ts">
+    import {startNucleares} from "./nucleares";
+    import {getReactor}from"../reactor";
   import Pump from "./pump.svelte";
-  let name = 'World';
+  let reactorState = getReactor();
+  let serverOnline = false;
+
+  startNucleares((online, state)=>{
+  serverOnline = online;
+  reactorState=state;
+  console.log("spoj: reactorState",reactorState);
+  });
 </script>
 
 <style>
@@ -8,14 +17,10 @@
     text-align: center;
     padding: 2rem;
   }
-  input {
-    padding: 0.5rem;
-    margin-top: 1rem;
-  }
 </style>
 
 <main>
-  <Pump speed=1 active=true />
-  <Pump speed=2 active=true />
-  <Pump speed=3 active=true />
+  <Pump state={reactorState.coolant.pumps[0]} />
+  <Pump state={reactorState.coolant.pumps[1]} />
+  <Pump state={reactorState.coolant.pumps[2]} />
 </main>

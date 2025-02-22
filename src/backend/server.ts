@@ -13,8 +13,8 @@ const PORT = Config.PORT;
 const files = [
   ["/", Config.STATIC_PATH + "index.html"],
   ["/index.html", Config.STATIC_PATH + "index.html"],
-  ["/app.js", Config.DIST_PATH+"app.js"],
-  ["/app.css", Config.DIST_PATH+"app.css"],
+  ["/app.js", Config.DIST_PATH + "app.js"],
+  ["/app.css", Config.DIST_PATH + "app.css"],
 ];
 
 const serveFile = (urlpath: string, filepath: string) => {
@@ -25,7 +25,7 @@ const serveFile = (urlpath: string, filepath: string) => {
 };
 
 files.forEach(([urlpath, filepath]) => {
-    serveFile(urlpath, filepath);
+  serveFile(urlpath, filepath);
 });
 
 app.get("/status", (_: Request, res: Response) => {

@@ -1,4 +1,4 @@
-export type Core = {
+export interface Core {
   temp: {
     current: number;
     operative: number;
@@ -21,14 +21,14 @@ export type Core = {
   readyForStart: boolean;
   steamPresent: boolean;
   highSteamPresent: boolean;
-};
+}
 
-export type TimeInfo = {
+export interface TimeInfo {
   time: number;
   timestamp: number;
-};
+}
 
-export type Coolant = {
+export interface Coolant {
   circulating: number;
   pressure: number;
   maxPressure: number;
@@ -41,17 +41,17 @@ export type Coolant = {
   quantityCirculationPumpsPresent: number;
   quantityFreightPumpsPresent: number;
   pumps: Pump[];
-};
+}
 
-export type Pump = {
+export interface Pump {
   status: number;
   dryStatus: number;
   overloadStatus: number;
   orderedSpeed: number;
   speed: number;
-};
+}
 
-export type Rods = {
+export interface Rods {
   status: number;
   movementSpeed: number;
   movementSpeedDecreasedHighTemp: boolean;
@@ -63,23 +63,23 @@ export type Rods = {
   posReached: number;
   quantity: number;
   aligned: boolean;
-};
+}
 
-export type Generator = {
+export interface Generator {
   kw: number;
   v: number;
   a: number;
   hertz: number;
   breaker: number;
-};
+}
 
-export type SteamTurbine = {
+export interface SteamTurbine {
   rpm: number;
   temperature: number;
   pressure: number;
-};
+}
 
-export type Reactor = {
+export interface Reactor {
   online: boolean;
   time: TimeInfo;
   core: Core;
@@ -87,7 +87,7 @@ export type Reactor = {
   rods: Rods;
   generators: Generator[];
   turbines: SteamTurbine[];
-};
+}
 
 export function getReactor(): Reactor {
   return {
