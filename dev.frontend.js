@@ -11,7 +11,7 @@ async function build() {
   });
 
   console.log("⚡ Watching for changes...");
-  await ctx.watch(); // Enables watching for file changes
+  await ctx.watch();
 }
 
 build().catch(() => process.exit(1));

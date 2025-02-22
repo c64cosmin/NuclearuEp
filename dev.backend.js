@@ -4,7 +4,6 @@ const fs = require("fs");
 let serverProcess;
 
 function startServer() {
- // Kill the previous server instance
     if (serverProcess) {
         serverProcess.kill();
     }
