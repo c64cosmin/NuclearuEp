@@ -26,11 +26,10 @@ export function seekNucleares() {
       .on("error", () => {
         NuclearesState.online = false;
       });
-
-    setTimeout(pingFunction, 30000);
   };
 
   pingFunction();
+  setInterval(pingFunction, 30000);
 }
 
 function doRequest(variable: string, path: (string | number)[]) {
