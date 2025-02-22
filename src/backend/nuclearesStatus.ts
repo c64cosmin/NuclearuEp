@@ -1,6 +1,6 @@
 import * as http from "http";
-import { Config } from "./config";
-import { Reactor, getReactor } from "./reactor";
+import { Config } from "../config";
+import { Reactor, getReactor } from "../reactor";
 import { NuclearesPaths } from "./nucleares";
 
 export let NuclearesState: Reactor = getReactor();

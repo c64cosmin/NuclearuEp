@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import path from "path";
-import { Config } from "./config";
+import { Config } from "../config";
 import {
   seekNucleares,
   NuclearesState,
@@ -28,7 +28,7 @@ const serveImages = express.static(
 
 app.get("/", serveHtml);
 app.get("/index.html", serveHtml);
-app.get("/app", serveJs);
+app.get("/app.js", serveJs);
 app.get("/status", serveStatus);
 app.use("/img", serveImages);
 
