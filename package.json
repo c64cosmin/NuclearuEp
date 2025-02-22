@@ -1,25 +1,26 @@
 {
-  "name": "nucleares",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "node dist/backend/backend/server.js",
-    "build": "npm run build:backend && npm run build:frontend",
-    "build:backend": "tsc",
-    "build:frontend": "node esbuild.frontend.js"
-  },
-  "author": "c64cosmin",
-  "dependencies": {
-    "esbuild-svelte": "^0.9.0",
-    "express": "^4.21.2",
-    "prettier": "^3.5.1"
-  },
-  "devDependencies": {
-    "@types/express": "^5.0.0",
-    "@types/node": "^22.13.4",
-    "esbuild": "^0.25.0",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.7.3"
-  }
+	"name": "nucleares",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "node dist/backend/backend/server.js",
+		"build": "npm run build:backend && npm run build:frontend",
+		"build:backend": "tsc",
+		"build:frontend": "node esbuild.frontend.js"
+	},
+	"author": "c64cosmin",
+	"dependencies": {
+		"esbuild-svelte": "^0.9.0",
+		"express": "^4.21.2"
+	},
+	"devDependencies": {
+		"@types/express": "^5.0.0",
+		"@types/node": "^22.13.4",
+		"esbuild": "^0.25.0",
+		"prettier": "^3.5.1",
+		"prettier-plugin-svelte": "^3.3.3",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.7.3"
+	}
 }
