@@ -66,8 +66,8 @@ export interface Rods {
 }
 
 export interface Turbine {
-    turbine: SteamTurbine;
-    generator: Generator;
+	turbine: SteamTurbine;
+	generator: Generator;
 }
 
 export interface Generator {
@@ -173,44 +173,48 @@ export function getReactor(): Reactor {
 			quantity: 10,
 			aligned: true,
 		},
-		generators: [
-			{
-				kw: 1000,
-				v: 220,
-				a: 10,
-				hertz: 60,
-				breaker: 1,
-			},
-			{
-				kw: 1500,
-				v: 220,
-				a: 12,
-				hertz: 60,
-				breaker: 1,
-			},
-			{
-				kw: 1500,
-				v: 220,
-				a: 12,
-				hertz: 60,
-				breaker: 1,
-			},
-		],
 		turbines: [
 			{
-				rpm: 3000,
-				temperature: 450,
-				pressure: 200,
+				turbine: {
+					rpm: 3000,
+					temperature: 450,
+					pressure: 200,
+				},
+				generator: {
+					kw: 1500,
+					v: 220,
+					a: 12,
+					hertz: 60,
+					breaker: 1,
+				},
 			},
 			{
-				rpm: 3000,
-				temperature: 450,
-				pressure: 200,
+				turbine: {
+					rpm: 3000,
+					temperature: 450,
+					pressure: 200,
+				},
+				generator: {
+					kw: 1500,
+					v: 220,
+					a: 12,
+					hertz: 60,
+					breaker: 1,
+				},
 			},
 			{
-				rpm: 3100,
-				temperature: 460,
-				pressure: 220,
+				turbine: {
+					rpm: 3000,
+					temperature: 450,
+					pressure: 200,
+				},
+				generator: {
+					kw: 1500,
+					v: 220,
+					a: 12,
+					hertz: 60,
+					breaker: 1,
+				},
 			},
 		],
 	};

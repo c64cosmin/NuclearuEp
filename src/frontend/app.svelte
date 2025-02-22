@@ -2,6 +2,8 @@
 	import { startNucleares } from "./nucleares";
 	import { getReactor } from "../reactor";
 	import Pump from "./pump.svelte";
+	import Gauge from "./gauge.svelte";
+
 	let reactorState = getReactor();
 	let serverOnline = false;
 

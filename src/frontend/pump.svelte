@@ -11,7 +11,7 @@
 </script>
 
 <div class="image-container">
-	<div>
+	<div class="image-container-div">
 		<svg
 			width="100"
 			height="100"
@@ -34,7 +34,7 @@
 			/>
 		</svg>
 	</div>
-	<div>
+	<div class="image-container-div">
 		<svg
 			class="rotating"
 			style={`animation-duration: ${duration}s`}
@@ -50,6 +50,9 @@
 			<polygon points="10,50 40,40 35,50 40,60" fill="gray" />
 		</svg>
 	</div>
+	<div class="gauge">
+		{state.speed}
+	</div>
 </div>
 
 <style>
@@ -58,6 +61,18 @@
 		margin: auto;
 		width: 100%;
 		height: 100%;
+	}
+
+	.gauge {
+		position: absolute;
+		top: 10px;
+		left: 10px;
+		background-color: rgba(255, 255, 255, 0.8);
+		padding: 5px 10px;
+		font-size: 18px;
+		font-weight: bold;
+		border-radius: 5px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 	}
 
 	.rotating {
@@ -81,7 +96,7 @@
 		height: 200px;
 	}
 
-	.image-container div {
+	.image-container-div {
 		grid-column: 1;
 		grid-row: 1;
 		width: 100%;
