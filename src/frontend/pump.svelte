@@ -2,8 +2,12 @@
 	import type { Pump } from "../reactor";
 	export let state: Pump;
 
-        $: duration = state.speed === 0 ? 0 : 40 / state.speed;
-        $: bodyColor = state.dryStatus ? "red" : "blue";
+	$: duration = state.speed === 0 ? 0 : 40 / state.speed;
+	$: bodyColor = state.dryStatus
+		? "gray"
+		: state.overloadStatus
+			? "red"
+			: "blue";
 </script>
 
 <div class="image-container">
@@ -25,16 +29,15 @@
 				y="0"
 				width="100"
 				height="100"
-                fill={bodyColor}
+				fill={bodyColor}
 				mask="url(#hole-mask)"
 			/>
 		</svg>
 	</div>
-	<div
-	>
+	<div>
 		<svg
-		class="rotating"
-      style={`animation-duration: ${duration}s`}
+			class="rotating"
+			style={`animation-duration: ${duration}s`}
 			width="100"
 			height="100"
 			viewBox="0 0 100 100"
@@ -78,7 +81,7 @@
 		height: 200px;
 	}
 
-	.image-container div{
+	.image-container div {
 		grid-column: 1;
 		grid-row: 1;
 		width: 100%;

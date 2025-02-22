@@ -14,6 +14,7 @@ export function updateNuclearesState() {
 	for (let i = 0; i < 3; i++) {
 		NuclearesState.coolant.pumps[i].speed = Math.floor(Math.random() * 100);
 		NuclearesState.coolant.pumps[i].dryStatus = Math.floor(Math.random() * 2);
+		NuclearesState.coolant.pumps[i].overloadStatus = Math.floor(Math.random() * 2);
 	}
 }
 

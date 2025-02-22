@@ -65,6 +65,11 @@ export interface Rods {
 	aligned: boolean;
 }
 
+export interface Turbine {
+    turbine: SteamTurbine;
+    generator: Generator;
+}
+
 export interface Generator {
 	kw: number;
 	v: number;
@@ -85,8 +90,7 @@ export interface Reactor {
 	core: Core;
 	coolant: Coolant;
 	rods: Rods;
-	generators: Generator[];
-	turbines: SteamTurbine[];
+	turbines: Turbine[];
 }
 
 export function getReactor(): Reactor {

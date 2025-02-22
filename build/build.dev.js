@@ -10,7 +10,9 @@ function startServer() {
 	}
 
 	console.log("🔄 Compiling...");
+    try{
 	execSync("npm run build", { stdio: "inherit" });
+    }catch(_){ };
 	console.log("🔄 Restarting server...");
 	serverProcess = spawn("node", ["./dist/backend/backend/server.js"], {
 		stdio: "inherit",

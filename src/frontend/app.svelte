@@ -16,6 +16,7 @@
 	<Pump state={reactorState.coolant.pumps[0]} />
 	<Pump state={reactorState.coolant.pumps[1]} />
 	<Pump state={reactorState.coolant.pumps[2]} />
+	<div>{JSON.stringify(reactorState)}</div>
 </main>
 
 <style>
