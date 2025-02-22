@@ -11,9 +11,10 @@ export function updateNuclearesState() {
 			doRequest(variable, NuclearesPaths[variable]);
 		}
 	}
-	NuclearesState.coolant.pumps[0].speed = Math.floor(Math.random() * 100);
-	NuclearesState.coolant.pumps[1].speed = Math.floor(Math.random() * 100);
-	NuclearesState.coolant.pumps[2].speed = Math.floor(Math.random() * 100);
+	for (let i = 0; i < 3; i++) {
+		NuclearesState.coolant.pumps[i].speed = Math.floor(Math.random() * 100);
+		NuclearesState.coolant.pumps[i].dryStatus = Math.floor(Math.random() * 2);
+	}
 }
 
 export function seekNucleares() {

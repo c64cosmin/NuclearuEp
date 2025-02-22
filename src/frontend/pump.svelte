@@ -2,23 +2,59 @@
 	import type { Pump } from "../reactor";
 	export let state: Pump;
 
-	$: duration = state.speed === 0 ? 0 : 40 / state.speed;
+        $: duration = state.speed === 0 ? 0 : 40 / state.speed;
+        $: bodyColor = state.dryStatus ? "red" : "blue";
 </script>
 
 <div class="image-container">
-	<img src="img/pump.svg" alt="pump" />
-	<img
-		src="img/propeller.svg"
-		alt="fan"
+	<div>
+		<svg
+			width="100"
+			height="100"
+			viewBox="0 0 100 100"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<defs>
+				<mask id="hole-mask">
+					<rect x="0" y="0" width="100" height="100" fill="white" />
+					<circle cx="50" cy="50" r="40" fill="black" />
+				</mask>
+			</defs>
+			<rect
+				x="0"
+				y="0"
+				width="100"
+				height="100"
+                fill={bodyColor}
+				mask="url(#hole-mask)"
+			/>
+		</svg>
+	</div>
+	<div
+	>
+		<svg
 		class="rotating"
-		style={`animation-duration: ${duration}s`}
-	/>
+      style={`animation-duration: ${duration}s`}
+			width="100"
+			height="100"
+			viewBox="0 0 100 100"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<circle cx="50" cy="50" r="10" fill="black" />
+			<polygon points="50,10 60,40 50,35 40,40" fill="gray" />
+			<polygon points="90,50 60,60 65,50 60,40" fill="gray" />
+			<polygon points="50,90 40,60 50,65 60,60" fill="gray" />
+			<polygon points="10,50 40,40 35,50 40,60" fill="gray" />
+		</svg>
+	</div>
 </div>
 
 <style>
-	img {
+	svg {
 		display: block;
 		margin: auto;
+		width: 100%;
+		height: 100%;
 	}
 
 	.rotating {
@@ -42,7 +78,7 @@
 		height: 200px;
 	}
 
-	.image-container img {
+	.image-container div{
 		grid-column: 1;
 		grid-row: 1;
 		width: 100%;
