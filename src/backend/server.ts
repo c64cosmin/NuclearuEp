@@ -11,9 +11,10 @@ const app = express();
 const PORT = Config.PORT;
 
 const files = [
-  ["/", Config.STATIC_PATH + Config.INDEX_HTML],
-  ["/index.html", Config.STATIC_PATH + Config.INDEX_HTML],
-  ["/app.js", Config.JS_PATH],
+  ["/", Config.STATIC_PATH + "index.html"],
+  ["/index.html", Config.STATIC_PATH + "index.html"],
+  ["/app.js", Config.DIST_PATH+"app.js"],
+  ["/app.css", Config.DIST_PATH+"app.css"],
 ];
 
 const serveFile = (urlpath: string, filepath: string) => {

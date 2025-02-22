@@ -4,7 +4,6 @@ export const Config = {
   NUCLEARES_PATH: "localhost",
   NUCLEARES_PORT: 8785,
   STATIC_PATH: "../../../static/",
-  INDEX_HTML: "index.html",
+  DIST_PATH: "../../../dist/frontend/",
   IMAGE_PATH: "img",
-  JS_PATH: "../../../dist/frontend/app.js",
 } as const;
