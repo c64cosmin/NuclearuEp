@@ -7,8 +7,8 @@
 		"dev": "concurrently --kill-others \"npm run dev:backend\" \"npm run dev:frontend\"",
         "build": "npm run build:backend && npm run build:frontend",
         "start": "node dist/backend/backend/server.js",
-		"dev:backend": "node dist/backend/backend/server.js",
-		"dev:frontend": "node esbuild.frontend.dev.js",
+		"dev:backend": "concurrently --kill-others \"node dev.backend.js\" \"npx tsc --watch\"",
+		"dev:frontend": "node dev.frontend.js",
 		"build:backend": "tsc",
 		"build:frontend": "node esbuild.frontend.js"
 	},
