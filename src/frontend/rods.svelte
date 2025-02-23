@@ -2,20 +2,25 @@
 	import type { Rods } from "../reactor";
 	export let state: Rods;
 
-	let rodsLevel = 100;  function increment() {
-	rodsLevel+=0.1;
-	if(rodsLevel>100)rodsLevel=100;
-  }
+	let interacted: boolean = false;
+	let rodsLevel = 100;
+	function increment() {
+		interacted = true;
+		rodsLevel += 0.1;
+		if (rodsLevel > 100) rodsLevel = 100;
+	}
 
-  function decrement() {
-	rodsLevel-=0.1;
-	if(rodsLevel<0)rodsLevel=0;
-  }
+	function decrement() {
+		interacted = true;
+		rodsLevel -= 0.1;
+		if (rodsLevel < 0) rodsLevel = 0;
+	}
 
-  function sendRodsLevel(){
-  console.log(rodsLevel);
-  }
-   $:rodsLevel = state.posOrdered;
+	function sendRodsLevel() {
+		interacted = false;
+		console.log(rodsLevel);
+	}
+	$: rodsLevel = interacted ? rodsLevel : state.posOrdered;
 </script>
 
 <div class="grid-container">
@@ -38,9 +43,9 @@
 			</svg>
 		</div>
 	</div>
-	<div class="gauge-value grid-item">
+	<div class="grid-item">
 		<div class="grid-container half">
-			<div class="grid-item">
+			<div class="gauge-value grid-item">
 				{Number(state.posActual).toFixed(1)}
 			</div>
 			<button class="grid-item" on:click={sendRodsLevel}>Update</button>
@@ -103,7 +108,7 @@
 		width: 600px;
 	}
 
-	.half{
+	.half {
 		height: 50;
 		grid-template-columns: repeat(1, 1fr);
 		grid-template-rows: repeat(2, 1fr);
