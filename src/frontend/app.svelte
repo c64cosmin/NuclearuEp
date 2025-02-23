@@ -4,6 +4,7 @@
 	import Pump from "./pump.svelte";
 	import Turbine from "./turbine.svelte";
 	import Rods from "./rods.svelte";
+	import Gauge from "./gauge.svelte";
 
 	let reactorState = getReactor();
 	let serverOnline = false;
@@ -11,7 +12,6 @@
 	startNucleares((online, state) => {
 		serverOnline = online;
 		reactorState = state;
-		console.log("spoj: reactorState", reactorState);
 	});
 
 	$: appContainerStyle = "opacity:" + (serverOnline ? "100%" : "30%") + ""; //(!serverOnline || !reactorState.online ? ";filter: blur(10px)" : "");
@@ -59,7 +59,11 @@
 		<Turbine state={reactorState.turbines[1]} />
 		<Turbine state={reactorState.turbines[2]} />
 		<Rods state={reactorState.rods} />
-		<div>{JSON.stringify(reactorState)}</div>
+		<Gauge
+			label="Core temp"
+			value={reactorState.core.temp.current}
+			range={[0, 800]}
+		/>
 	</div>
 </main>
 

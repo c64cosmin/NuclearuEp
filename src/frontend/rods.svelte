@@ -17,11 +17,23 @@
 		if (rodsLevel < 0) rodsLevel = 0;
 	}
 
+	function incrementBig() {
+		interacted = true;
+		rodsLevel += 1.0;
+		if (rodsLevel > 100) rodsLevel = 100;
+	}
+
+	function decrementBig() {
+		interacted = true;
+		rodsLevel -= 1.0;
+		if (rodsLevel < 0) rodsLevel = 0;
+	}
+
 	function send() {
 		sendRodLevel(rodsLevel);
 		interacted = false;
 	}
-	$: rodsLevel = interacted ? rodsLevel : state.posOrdered;
+	$: rodsLevel = interacted ? rodsLevel : state.posActual;
 </script>
 
 <div class="grid-container">
@@ -44,32 +56,28 @@
 			</svg>
 		</div>
 	</div>
-	<div class="grid-item">
-		<div class="grid-container half">
-			<div class="gauge-value grid-item">
-				{Number(state.posActual).toFixed(1)}
-			</div>
-			<button class="grid-item" on:click={send}>Update</button>
+	<div class="grid-container12">
+		<div class="gauge-value">
+			{Number(state.posActual).toFixed(1)}
 		</div>
+		<button class="grid-item" on:click={send}>Send</button>
 	</div>
-	<div class="grid-item">
-		<div class="grid-container third">
+	<div class="grid-container13">
+		<div class="grid-container21">
 			<button class="grid-item" on:click={increment}>+</button>
-			<div class="gauge-value grid-item">
-				{Number(rodsLevel).toFixed(1)}
-			</div>
+			<button class="grid-item" on:click={incrementBig}>++</button>
+		</div>
+		<div class="gauge-value2">
+			{Number(rodsLevel).toFixed(1)}
+		</div>
+		<div class="grid-container21">
 			<button class="grid-item" on:click={decrement}>-</button>
+			<button class="grid-item" on:click={decrementBig}>--</button>
 		</div>
 	</div>
 </div>
 
 <style>
-	button {
-		width: 100%;
-		height: 100%;
-		font-size: 50px;
-	}
-
 	svg {
 		display: block;
 		margin: auto;
@@ -80,7 +88,16 @@
 	.gauge-value {
 		background-color: rgba(255, 255, 255, 0.8);
 		padding: 5px 10px;
-		font-size: 50px;
+		font-size: 70px;
+		font-weight: bold;
+		border-radius: 5px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+	}
+
+	.gauge-value2 {
+		background-color: rgba(255, 255, 255, 0.8);
+		padding: 5px 10px;
+		font-size: 40px;
 		font-weight: bold;
 		border-radius: 5px;
 		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -107,25 +124,39 @@
 		grid-template-columns: repeat(3, 1fr);
 		grid-template-rows: repeat(1, 1fr);
 		width: 600px;
+		height: 200px;
 	}
 
-	.half {
-		height: 50;
+	.grid-container12 {
+		display: grid;
+		place-items: center;
+		width: 100%;
+		height: 100%;
 		grid-template-columns: repeat(1, 1fr);
 		grid-template-rows: repeat(2, 1fr);
-		width: 200px;
-		height: 200px;
 	}
 
-	.third {
-		height: 33.33%;
+	.grid-container21 {
+		display: grid;
+		place-items: center;
+		width: 100%;
+		height: 100%;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: repeat(1, 1fr);
+	}
+
+	.grid-container13 {
+		display: grid;
+		place-items: center;
+		width: 100%;
+		height: 100%;
 		grid-template-columns: repeat(1, 1fr);
 		grid-template-rows: repeat(3, 1fr);
-		width: 200px;
-		height: 200px;
 	}
 
-	.grid-item {
-		text-align: center;
+	button {
+		font-size: 50px;
+		width: 100%;
+		height: 100%;
 	}
 </style>

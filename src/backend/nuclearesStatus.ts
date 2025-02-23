@@ -11,12 +11,14 @@ export function updateNuclearesState() {
 			doRequest(variable, NuclearesPaths[variable]);
 		}
 	}
+	/*
 	for (let i = 0; i < 3; i++) {
 		NuclearesState.pumps[i].speed = Math.floor(Math.random() * 100);
 		NuclearesState.pumps[i].dryStatus = Math.floor(Math.random() * 2);
 		NuclearesState.pumps[i].overloadStatus = Math.floor(Math.random() * 2);
 	}
 	NuclearesState.rods.posActual = Math.floor(Math.random() * 100);
+	*/
 }
 
 export function seekNucleares() {
@@ -36,14 +38,17 @@ export function seekNucleares() {
 }
 
 export function handleSentState(state: ControlableReactor) {
-	console.log("spoj: state", state);
+	if (!NuclearesState.online) {
+		return;
+	}
+	sendCommand("RODS_POS_ORDERED", state.rods);
 }
 
 function doRequest(variable: string, path: (string | number)[]) {
 	const options = {
 		hostname: Config.NUCLEARES_PATH,
 		port: Config.NUCLEARES_PORT,
-		path: "/?variable=" + variable,
+		path: `/?variable=${variable}`,
 		method: "GET",
 	};
 
@@ -83,5 +88,35 @@ function doRequest(variable: string, path: (string | number)[]) {
 		NuclearesState.online = false;
 	});
 
+	req.end();
+}
+
+function sendCommand(variable: string, value: number) {
+	const data = "";
+
+	const options = {
+		hostname: Config.NUCLEARES_PATH,
+		port: Config.NUCLEARES_PORT,
+		path: `/?variable=${variable}&value=${value}`,
+		method: "POST",
+	};
+
+	const req = http.request(options, (res) => {
+		let responseData = "";
+
+		res.on("data", (chunk) => {
+			responseData += chunk;
+		});
+
+		res.on("end", () => {
+			console.log("Response from server:", responseData);
+		});
+	});
+
+	req.on("error", (error) => {
+		console.error("Error:", error);
+	});
+
+	req.write(data);
 	req.end();
 }

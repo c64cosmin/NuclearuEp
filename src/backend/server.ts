@@ -41,6 +41,7 @@ app.use(
 
 app.post("/command", (req, res) => {
 	handleSentState(req.body);
+	res.send();
 });
 
 app.listen(Config.PORT, () => {
