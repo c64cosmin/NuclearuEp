@@ -51,6 +51,9 @@
 				style={"visibility:" + (reactorState.online ? "visible" : "hidden")}
 			/>
 		</div>
+        <div class="image-container">
+            {reactorState.time.time}
+		</div>
 	</div>
 	<div style={appContainerStyle}>
 		<Core state={reactorState} />
@@ -63,7 +66,6 @@
 		<Turbine state={reactorState.turbines[0]} />
 		<Turbine state={reactorState.turbines[1]} />
 		<Turbine state={reactorState.turbines[2]} />
-		<div>{JSON.stringify(reactorState.coolant)}</div>
 	</div>
 </main>
 
