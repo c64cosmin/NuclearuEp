@@ -45,3 +45,16 @@ function updateStatus(callback: (online: boolean, state: Reactor) => void) {
 
 	xhr.send();
 }
+
+export function sendRodLevel(level: number) {
+	sendCommand();
+}
+
+function sendCommand() {
+	const xhr = new XMLHttpRequest();
+	xhr.open("POST", "/command", true);
+	xhr.setRequestHeader("Content-Type", "application/json");
+
+	const data = JSON.stringify({ name: "Alice", age: 25 });
+	xhr.send(data);
+}

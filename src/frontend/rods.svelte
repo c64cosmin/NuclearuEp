@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Rods } from "../reactor";
+	import { sendRodLevel } from "./nucleares";
 	export let state: Rods;
 
 	let interacted: boolean = false;
@@ -16,9 +17,9 @@
 		if (rodsLevel < 0) rodsLevel = 0;
 	}
 
-	function sendRodsLevel() {
+	function send() {
+		sendRodLevel(rodsLevel);
 		interacted = false;
-		console.log(rodsLevel);
 	}
 	$: rodsLevel = interacted ? rodsLevel : state.posOrdered;
 </script>
@@ -48,7 +49,7 @@
 			<div class="gauge-value grid-item">
 				{Number(state.posActual).toFixed(1)}
 			</div>
-			<button class="grid-item" on:click={sendRodsLevel}>Update</button>
+			<button class="grid-item" on:click={send}>Update</button>
 		</div>
 	</div>
 	<div class="grid-item">

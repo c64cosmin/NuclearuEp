@@ -8,7 +8,8 @@ import {
 } from "./nuclearesStatus";
 
 const app = express();
-const PORT = Config.PORT;
+
+app.use(express.json());
 
 const files = [
 	["/", Config.STATIC_PATH + "index.html"],
@@ -37,8 +38,13 @@ app.use(
 	express.static(path.join(__dirname, Config.STATIC_PATH, Config.IMAGE_PATH)),
 );
 
-app.listen(PORT, () => {
-	console.log(`Server running at http://localhost:${PORT}/`);
+app.post("/command", (req, res) => {
+	console.log("Received data:", req.body);
+	res.send(`Server received: ${req.body}`);
+});
+
+app.listen(Config.PORT, () => {
+	console.log(`Server running at http://localhost:${Config.PORT}/`);
 });
 
 const update = () => {
