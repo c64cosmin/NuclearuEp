@@ -79,11 +79,7 @@
 		/>
 	</div>
 	<div class="grid-item">
-		<Gauge
-			label="Pressure"
-			value={state.coolant.pressure}
-			range={[0, 300]}
-		/>
+		<Gauge label="Pressure" value={state.coolant.pressure} range={[0, 300]} />
 	</div>
 </div>
 
@@ -117,15 +113,6 @@
 
 	.grid-item {
 		text-align: center;
-	}
-
-	.gauge-value {
-		background-color: rgba(255, 255, 255, 0.8);
-		padding: 5px 10px;
-		font-size: 40px;
-		font-weight: bold;
-		border-radius: 5px;
-		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 	}
 
 	.gauge-number {

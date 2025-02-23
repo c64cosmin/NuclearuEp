@@ -157,13 +157,4 @@
 	.big {
 		font-size: 40px;
 	}
-
-	.gauge-value {
-		background-color: rgba(255, 255, 255, 0.8);
-		padding: 5px 10px;
-		font-size: 40px;
-		font-weight: bold;
-		border-radius: 5px;
-		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-	}
 </style>

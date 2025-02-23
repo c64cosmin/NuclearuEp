@@ -14,8 +14,9 @@
 		reactorState = state;
 	});
 
-	//$: appContainerStyle = (!serverOnline || !reactorState.online ? ";filter: blur(10px)" : "");
-	$: appContainerStyle = "opacity:" + (serverOnline ? "100%" : "30%") + ""; //(!serverOnline || !reactorState.online ? ";filter: blur(10px)" : "");
+	$: appContainerStyle =
+		!serverOnline || !reactorState.online ? ";filter: blur(10px)" : "";
+	//$: appContainerStyle = "opacity:" + (serverOnline ? "100%" : "30%") + ""; //(!serverOnline || !reactorState.online ? ";filter: blur(10px)" : "");
 </script>
 
 <main>
@@ -51,8 +52,8 @@
 				style={"visibility:" + (reactorState.online ? "visible" : "hidden")}
 			/>
 		</div>
-        <div class="image-container">
-            {reactorState.time.time}
+		<div class="image-container" style="font-size:30px; font-weight:bold;">
+			{reactorState.time.time}
 		</div>
 	</div>
 	<div style={appContainerStyle}>
@@ -62,7 +63,7 @@
 			<Pump state={reactorState.pumps[1]} />
 			<Pump state={reactorState.pumps[2]} />
 		</div>
-        <Rods state={reactorState.rods} />
+		<Rods state={reactorState.rods} />
 		<Turbine state={reactorState.turbines[0]} />
 		<Turbine state={reactorState.turbines[1]} />
 		<Turbine state={reactorState.turbines[2]} />

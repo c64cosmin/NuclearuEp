@@ -11,14 +11,6 @@ export function updateNuclearesState() {
 			doRequest(variable, NuclearesPaths[variable]);
 		}
 	}
-	/*
-	for (let i = 0; i < 3; i++) {
-		NuclearesState.pumps[i].speed = Math.floor(Math.random() * 100);
-		NuclearesState.pumps[i].dryStatus = Math.floor(Math.random() * 2);
-		NuclearesState.pumps[i].overloadStatus = Math.floor(Math.random() * 2);
-	}
-	NuclearesState.rods.posActual = Math.floor(Math.random() * 100);
-	*/
 }
 
 export function seekNucleares() {

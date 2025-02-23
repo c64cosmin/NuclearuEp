@@ -24,7 +24,7 @@ export interface Core {
 }
 
 export interface TimeInfo {
-	time: number;
+	time: string;
 	timestamp: number;
 }
 
@@ -97,7 +97,7 @@ export function getReactor(): Reactor {
 	return {
 		online: false,
 		time: {
-			time: Date.now(),
+			time: "Loading...",
 			timestamp: Date.now(),
 		},
 		core: {
