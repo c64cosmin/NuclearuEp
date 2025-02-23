@@ -4,11 +4,13 @@
 
 	$: duration = state.speed === 0 ? 0 : 40 / state.speed;
 	$: bodyColor =
-		state.dryStatus === 1
-			? "gray"
-			: state.overloadStatus === 1
-				? "red"
-				: "blue";
+	state.dryStatus === 1 ? "gray":
+	state.overloadStatus === 1 ? "red":
+	state.status === 0 ? "#000088":
+	state.status === 1 ? "#8888ff":
+	state.status === 2 ? "#0000ff":
+	state.status === 4 ? "white":
+				 "black";
 </script>
 
 <div class="image-container">
@@ -39,7 +41,7 @@
 		<img
 			alt="fan"
 			class="rotating"
-			style={`animation-duration: ${duration}s`}
+   			style={`animation-duration: ${duration}s;`+ ((state.status===4)?"opacity:30%":"")}
 			src="img/fan-svgrepo-com.svg"
 		/>
 	</div>

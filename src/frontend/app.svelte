@@ -4,7 +4,7 @@
 	import Pump from "./pump.svelte";
 	import Turbine from "./turbine.svelte";
 	import Rods from "./rods.svelte";
-	import Gauge from "./gauge.svelte";
+	import Core from "./core.svelte";
 
 	let reactorState = getReactor();
 	let serverOnline = false;
@@ -14,6 +14,7 @@
 		reactorState = state;
 	});
 
+	//$: appContainerStyle = (!serverOnline || !reactorState.online ? ";filter: blur(10px)" : "");
 	$: appContainerStyle = "opacity:" + (serverOnline ? "100%" : "30%") + ""; //(!serverOnline || !reactorState.online ? ";filter: blur(10px)" : "");
 </script>
 
@@ -52,20 +53,17 @@
 		</div>
 	</div>
 	<div style={appContainerStyle}>
+		<Core state={reactorState} />
 		<div class="grid-container31">
 			<Pump state={reactorState.pumps[0]} />
 			<Pump state={reactorState.pumps[1]} />
 			<Pump state={reactorState.pumps[2]} />
 		</div>
+        <Rods state={reactorState.rods} />
 		<Turbine state={reactorState.turbines[0]} />
 		<Turbine state={reactorState.turbines[1]} />
 		<Turbine state={reactorState.turbines[2]} />
-		<Rods state={reactorState.rods} />
-		<Gauge
-			label="Core temp"
-			value={reactorState.core.temp.current}
-			range={[0, 800]}
-		/>
+		<div>{JSON.stringify(reactorState.coolant)}</div>
 	</div>
 </main>
 

@@ -69,8 +69,8 @@ function doRequest(variable: string, path: (string | number)[]) {
 				entry = entry[path[i]];
 			}
 
-			const positives = ["TRUE", "REACTIVO", "CIRCULANDO"];
-			const negatives = ["FALSE", "NOREACTIVO", "INMOVIL"];
+			const positives = ["true", "TRUE", "REACTIVO", "CIRCULANDO"];
+			const negatives = ["false", "FALSE", "NOREACTIVO", "INMOVIL"];
 
 			if (positives.includes(value)) value = "1";
 			if (negatives.includes(value)) value = "0";

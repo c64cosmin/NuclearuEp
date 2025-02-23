@@ -4,14 +4,6 @@
 	export let state: Turbine;
 
 	$: duration = state.turbine.rpm === 0 ? 0 : 306 / state.turbine.rpm;
-	$: watt =
-		state.generator.kw > 10000
-			? Number(state.generator.kw / 1000).toFixed(2) + "MW"
-			: Number(state.generator.kw).toFixed(0) + "kW";
-	$: volts =
-		state.generator.v > 10000
-			? Number(state.generator.v / 1000).toFixed(2) + "kV"
-			: Number(state.generator.v).toFixed(0) + "V";
 </script>
 
 <div class="grid-container turbine">

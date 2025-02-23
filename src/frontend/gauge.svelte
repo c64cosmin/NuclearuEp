@@ -4,6 +4,7 @@
 	export let range: [number, number] = [0, 100];
 	export let label: string = "Gauge";
 	export let unit: string = "";
+	export let showNumbers: boolean = true;
 
 	$: angle = ((value - range[0]) / (range[1] - range[0])) * 180 - 90;
 </script>
@@ -32,19 +33,21 @@
 				/>
 			{/each}
 
-			{#each Array(5) as _, i}
-				<text
-					x="100"
-					y="25"
-					text-anchor="middle"
-					font-family="Arial, sans-serif"
-					font-size="17"
-					transform="rotate({Math.max(0.05, Math.min(0.95, i / 4)) * 180 -
-						90}, 100, 100)"
-				>
-					{(i / 4) * (range[1] - range[0]) + range[0]}
-				</text>
-			{/each}
+			{#if showNumbers}
+				{#each Array(5) as _, i}
+					<text
+						x="100"
+						y="25"
+						text-anchor="middle"
+						font-family="Arial, sans-serif"
+						font-size="17"
+						transform="rotate({Math.max(0.05, Math.min(0.95, i / 4)) * 180 -
+							90}, 100, 100)"
+					>
+						{(i / 4) * (range[1] - range[0]) + range[0]}
+					</text>
+				{/each}
+			{/if}
 
 			<line
 				x1="100"

@@ -15,12 +15,12 @@ export interface Core {
 	wear: number;
 	reactive: number;
 	stateCriticality: number;
-	criticalMassReached: boolean;
+	criticalMassReached: number;
 	criticalMassReachedCounter: number;
-	imminentFusion: boolean;
-	readyForStart: boolean;
-	steamPresent: boolean;
-	highSteamPresent: boolean;
+	imminentFusion: number;
+	readyForStart: number;
+	steamPresent: number;
+	highSteamPresent: number;
 }
 
 export interface TimeInfo {
@@ -53,15 +53,15 @@ export interface Pump {
 export interface Rods {
 	status: number;
 	movementSpeed: number;
-	movementSpeedDecreasedHighTemp: boolean;
-	deformed: boolean;
+	movementSpeedDecreasedHighTemp: number;
+	deformed: number;
 	temperature: number;
 	maxTemperature: number;
 	posOrdered: number;
 	posActual: number;
 	posReached: number;
 	quantity: number;
-	aligned: boolean;
+	aligned: number;
 }
 
 export interface Turbine {
