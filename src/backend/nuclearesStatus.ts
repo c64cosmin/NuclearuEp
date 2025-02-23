@@ -1,6 +1,6 @@
 import * as http from "http";
 import { Config } from "../config";
-import { Reactor, getReactor } from "../reactor";
+import { ControlableReactor, Reactor, getReactor } from "../reactor";
 import { NuclearesPaths } from "./nucleares";
 
 export let NuclearesState: Reactor = getReactor();
@@ -33,6 +33,10 @@ export function seekNucleares() {
 
 	pingFunction();
 	setInterval(pingFunction, 30000);
+}
+
+export function handleSentState(state: ControlableReactor) {
+	console.log("spoj: state", state);
 }
 
 function doRequest(variable: string, path: (string | number)[]) {

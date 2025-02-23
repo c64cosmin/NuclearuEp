@@ -219,3 +219,13 @@ export function getReactor(): Reactor {
 		],
 	};
 }
+
+export interface ControlableReactor {
+	rods: number;
+}
+
+export function getControlableReactor() {
+	return {
+		rods: 100,
+	};
+}

@@ -1,9 +1,15 @@
 import { Config } from "../config";
 import { copyData } from "../utils";
-import { Reactor, getReactor } from "../reactor";
+import {
+	ControlableReactor,
+	Reactor,
+	getControlableReactor,
+	getReactor,
+} from "../reactor";
 
 const reactorState: Reactor = getReactor();
 let serverOnline: boolean = false;
+const sentState: ControlableReactor = getControlableReactor();
 
 export function startNucleares(
 	callback: (online: boolean, state: Reactor) => void,
@@ -47,14 +53,24 @@ function updateStatus(callback: (online: boolean, state: Reactor) => void) {
 }
 
 export function sendRodLevel(level: number) {
+	sentState.rods = level;
 	sendCommand();
 }
 
+let sendCommandTimeoutHandler: any = undefined;
+
 function sendCommand() {
+	if (sendCommandTimeoutHandler) {
+		clearTimeout(sendCommandTimeoutHandler);
+	}
+	sendCommandTimeoutHandler = setTimeout(sendPostRequest, 300);
+}
+
+function sendPostRequest() {
 	const xhr = new XMLHttpRequest();
 	xhr.open("POST", "/command", true);
 	xhr.setRequestHeader("Content-Type", "application/json");
 
-	const data = JSON.stringify({ name: "Alice", age: 25 });
+	const data = JSON.stringify(sentState);
 	xhr.send(data);
 }

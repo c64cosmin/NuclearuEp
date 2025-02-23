@@ -5,6 +5,7 @@ import {
 	seekNucleares,
 	NuclearesState,
 	updateNuclearesState,
+	handleSentState,
 } from "./nuclearesStatus";
 
 const app = express();
@@ -39,8 +40,7 @@ app.use(
 );
 
 app.post("/command", (req, res) => {
-	console.log("Received data:", req.body);
-	res.send(`Server received: ${req.body}`);
+	handleSentState(req.body);
 });
 
 app.listen(Config.PORT, () => {
