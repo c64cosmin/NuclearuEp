@@ -58,13 +58,13 @@
 		<Gauge label="Pressure" value={state.turbine.pressure} range={[0, 600]} />
 	</div>
 	<div class="gauge-value grid-item big">
-		{"kw:" + state.generator.kw}
+		{"kw:" + Number(state.generator.kw).toFixed(0)}
 	</div>
 	<div class="gauge-value grid-item big">
-		{"v:" + state.generator.v}
+		{"v:" + Number(state.generator.v).toFixed(0)}
 	</div>
 	<div class="gauge-value grid-item big">
-		{state.generator.hertz + "hz"}
+		{Number(state.generator.hertz).toFixed(0) + "hz"}
 	</div>
 </div>
 
@@ -139,7 +139,7 @@
 	.gauge-value {
 		background-color: rgba(255, 255, 255, 0.8);
 		padding: 5px 10px;
-		font-size: 48px;
+		font-size: 40px;
 		font-weight: bold;
 		border-radius: 5px;
 		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);

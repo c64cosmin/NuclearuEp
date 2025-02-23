@@ -3,11 +3,12 @@
 	export let state: Pump;
 
 	$: duration = state.speed === 0 ? 0 : 40 / state.speed;
-	$: bodyColor = state.dryStatus
-		? "gray"
-		: state.overloadStatus
-			? "red"
-			: "blue";
+	$: bodyColor =
+		state.dryStatus === 1
+			? "gray"
+			: state.overloadStatus === 1
+				? "red"
+				: "blue";
 </script>
 
 <div class="image-container">

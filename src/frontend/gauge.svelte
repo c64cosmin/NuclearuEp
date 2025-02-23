@@ -26,7 +26,7 @@
 					y2="100"
 					stroke="black"
 					stroke-width="1"
-					transform="rotate({(i * 180) / 50}, 100, 100)"
+					transform={"rotate(" + (i * 180) / 50 + ", 100, 100)"}
 				/>
 			{/each}
 
@@ -61,7 +61,7 @@
 				{label}
 			</div>
 			<div class="gauge-value">
-				{value}
+				{Number(value).toFixed(2)}
 			</div>
 		</div>
 	</div>

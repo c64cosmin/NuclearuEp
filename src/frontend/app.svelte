@@ -3,6 +3,7 @@
 	import { getReactor } from "../reactor";
 	import Pump from "./pump.svelte";
 	import Turbine from "./turbine.svelte";
+	import Rods from "./rods.svelte";
 
 	let reactorState = getReactor();
 	let serverOnline = false;
@@ -13,9 +14,7 @@
 		console.log("spoj: reactorState", reactorState);
 	});
 
-	$: onlineIcon = serverOnline
-		? "cloud-check-svgrepo-com.svg"
-		: "cloud-slash-svgrepo-com.svg";
+	$: appContainerStyle = "opacity:" + (serverOnline ? "100%" : "30%") + ""; //(!serverOnline || !reactorState.online ? ";filter: blur(10px)" : "");
 </script>
 
 <main>
@@ -52,11 +51,14 @@
 			/>
 		</div>
 	</div>
-	<div style={"opacity:" + (serverOnline ? "100%" : "30%")}>
-		<Pump state={reactorState.coolant.pumps[0]} />
-		<Pump state={reactorState.coolant.pumps[1]} />
-		<Pump state={reactorState.coolant.pumps[2]} />
+	<div style={appContainerStyle}>
+		<Pump state={reactorState.pumps[0]} />
+		<Pump state={reactorState.pumps[1]} />
+		<Pump state={reactorState.pumps[2]} />
 		<Turbine state={reactorState.turbines[0]} />
+		<Turbine state={reactorState.turbines[1]} />
+		<Turbine state={reactorState.turbines[2]} />
+		<Rods state={reactorState.rods} />
 		<div>{JSON.stringify(reactorState)}</div>
 	</div>
 </main>

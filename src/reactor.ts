@@ -40,7 +40,6 @@ export interface Coolant {
 	reachedFlowSpeed: number;
 	quantityCirculationPumpsPresent: number;
 	quantityFreightPumpsPresent: number;
-	pumps: Pump[];
 }
 
 export interface Pump {
@@ -89,6 +88,7 @@ export interface Reactor {
 	time: TimeInfo;
 	core: Core;
 	coolant: Coolant;
+	pumps: Pump[];
 	rods: Rods;
 	turbines: Turbine[];
 }
@@ -136,30 +136,30 @@ export function getReactor(): Reactor {
 			reachedFlowSpeed: 10,
 			quantityCirculationPumpsPresent: 3,
 			quantityFreightPumpsPresent: 2,
-			pumps: [
-				{
-					status: 1,
-					dryStatus: 0,
-					overloadStatus: 0,
-					orderedSpeed: 0,
-					speed: 50,
-				},
-				{
-					status: 1,
-					dryStatus: 0,
-					overloadStatus: 0,
-					orderedSpeed: 0,
-					speed: 50,
-				},
-				{
-					status: 1,
-					dryStatus: 0,
-					overloadStatus: 0,
-					orderedSpeed: 0,
-					speed: 50,
-				},
-			],
 		},
+		pumps: [
+			{
+				status: 1,
+				dryStatus: 0,
+				overloadStatus: 0,
+				orderedSpeed: 0,
+				speed: 50,
+			},
+			{
+				status: 1,
+				dryStatus: 0,
+				overloadStatus: 0,
+				orderedSpeed: 0,
+				speed: 50,
+			},
+			{
+				status: 1,
+				dryStatus: 0,
+				overloadStatus: 0,
+				orderedSpeed: 0,
+				speed: 50,
+			},
+		],
 		rods: {
 			status: 1,
 			movementSpeed: 5,

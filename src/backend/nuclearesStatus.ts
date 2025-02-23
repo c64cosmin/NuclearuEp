@@ -12,12 +12,11 @@ export function updateNuclearesState() {
 		}
 	}
 	for (let i = 0; i < 3; i++) {
-		NuclearesState.coolant.pumps[i].speed = Math.floor(Math.random() * 100);
-		NuclearesState.coolant.pumps[i].dryStatus = Math.floor(Math.random() * 2);
-		NuclearesState.coolant.pumps[i].overloadStatus = Math.floor(
-			Math.random() * 2,
-		);
+		NuclearesState.pumps[i].speed = Math.floor(Math.random() * 100);
+		NuclearesState.pumps[i].dryStatus = Math.floor(Math.random() * 2);
+		NuclearesState.pumps[i].overloadStatus = Math.floor(Math.random() * 2);
 	}
+	NuclearesState.rods.posActual = Math.floor(Math.random() * 100);
 }
 
 export function seekNucleares() {
@@ -74,10 +73,10 @@ function doRequest(variable: string, path: (string | number)[]) {
 
 			entry[path[n - 1]] = value;
 		});
+	});
 
-		res.on("error", () => {
-			NuclearesState.online = false;
-		});
+	req.on("error", () => {
+		NuclearesState.online = false;
 	});
 
 	req.end();
