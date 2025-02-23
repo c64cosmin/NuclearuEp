@@ -1,7 +1,9 @@
 <script lang="ts">
 	export let value: number = 50;
+	export let valueString: string = "";
 	export let range: [number, number] = [0, 100];
 	export let label: string = "Gauge";
+	export let unit: string = "";
 
 	$: angle = ((value - range[0]) / (range[1] - range[0])) * 180 - 90;
 </script>
@@ -61,7 +63,8 @@
 				{label}
 			</div>
 			<div class="gauge-value">
-				{Number(value).toFixed(2)}
+				{(valueString ? valueString : Number(value).toFixed(2)) +
+					(unit ? unit : "")}
 			</div>
 		</div>
 	</div>
@@ -85,7 +88,7 @@
 	.gauge-value {
 		background-color: rgba(255, 255, 255, 0.8);
 		padding: 5px 10px;
-		font-size: 48px;
+		font-size: 40px;
 		font-weight: bold;
 		border-radius: 5px;
 		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);

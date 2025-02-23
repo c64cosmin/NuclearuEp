@@ -22,7 +22,7 @@
 			<defs>
 				<mask id="hole-mask">
 					<rect x="0" y="0" width="100" height="100" fill="white" />
-					<circle cx="50" cy="50" r="40" fill="black" />
+					<circle cx="50" cy="50" r="45" fill="black" />
 				</mask>
 			</defs>
 			<rect
@@ -36,20 +36,12 @@
 		</svg>
 	</div>
 	<div class="image-container-div">
-		<svg
+		<img
+			alt="fan"
 			class="rotating"
 			style={`animation-duration: ${duration}s`}
-			width="100"
-			height="100"
-			viewBox="0 0 100 100"
-			xmlns="http://www.w3.org/2000/svg"
-		>
-			<circle cx="50" cy="50" r="10" fill="black" />
-			<polygon points="50,10 60,40 50,35 40,40" fill="gray" />
-			<polygon points="90,50 60,60 65,50 60,40" fill="gray" />
-			<polygon points="50,90 40,60 50,65 60,60" fill="gray" />
-			<polygon points="10,50 40,40 35,50 40,60" fill="gray" />
-		</svg>
+			src="img/fan-svgrepo-com.svg"
+		/>
 	</div>
 	<div class="gauge">
 		{state.speed}
@@ -57,6 +49,12 @@
 </div>
 
 <style>
+	img {
+		display: block;
+		margin: auto;
+		width: 100%;
+		height: 100%;
+	}
 	svg {
 		display: block;
 		margin: auto;

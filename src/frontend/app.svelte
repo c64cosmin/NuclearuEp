@@ -52,9 +52,11 @@
 		</div>
 	</div>
 	<div style={appContainerStyle}>
-		<Pump state={reactorState.pumps[0]} />
-		<Pump state={reactorState.pumps[1]} />
-		<Pump state={reactorState.pumps[2]} />
+		<div class="grid-container31">
+			<Pump state={reactorState.pumps[0]} />
+			<Pump state={reactorState.pumps[1]} />
+			<Pump state={reactorState.pumps[2]} />
+		</div>
 		<Turbine state={reactorState.turbines[0]} />
 		<Turbine state={reactorState.turbines[1]} />
 		<Turbine state={reactorState.turbines[2]} />
@@ -86,5 +88,11 @@
 		grid-row: 1;
 		width: 100%;
 		height: 100%;
+	}
+
+	.grid-container31 {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+		width: 600px;
 	}
 </style>
