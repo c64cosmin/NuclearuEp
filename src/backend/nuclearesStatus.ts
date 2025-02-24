@@ -100,9 +100,7 @@ function sendCommand(variable: string, value: number) {
 			responseData += chunk;
 		});
 
-		res.on("end", () => {
-			console.log("Response from server:", responseData);
-		});
+		res.on("end", () => {});
 	});
 
 	req.on("error", (error) => {
